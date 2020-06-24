@@ -1,0 +1,72 @@
+
+                            23/06/2020
+--------------------------------------------------------------------------
+        Resultados:
+        CANT HAB:
+        REGION:
+        PERIOD DUR:
+        LONG CONTAG:
+        DIA         |SUS        |INF        |REC        |
+_______________________________________________________________________________
+_______________________________________________________________________________
+
+
+                            22/06/2020
+--------------------------------------------------------------------------
+        Lo que ya tengo hasta ahora es:
+            Un programa que calcula el numero de 
+            infectados, susceptibles y recuperados durante un periodo
+            de tiempo que ingresa el usuario por teclado.
+
+            Ademas, este programa va contando los dias que pasan
+            la cantidad de sujetos SIR que va teniendo
+            y va moviendo las posiciones adentro de un cuadrado
+            de dimensiones linf y lsup que ingresa tambien el usuario
+
+            Luego del periodo de tiempo, deja de contar y se frena
+            Tambien se frena si el usuario dice "no" a iterar <<<<<<<<<<<<<<<<<<<<<<<< CAMBIAR
+            Muestra en pantalla varias cosas de la matriz de posiciones <<<<<<<<<<<<<< CAMBIAR
+            Y también va explicitando todos los pasos que hace. <<<<<<<<<<<<<<<<<<<<<< CAMBIAR
+
+NEXT                   
+>>>>>>>>>>>>>>   escribir los resultados en archivos, con formato
+                 conveniente para graficar con xmgrace
+
+
+_______________________________________________________________________________
+_______________________________________________________________________________
+
+
+
+                            15/06/2020
+--------------------------------------------------------------------------
+    El programa positionRandomFlag.exe calcula posiciones aleatorias
+
+    <inicialmente> dentro de los limInf y limSup
+
+    ingresados por el usuario y obtiene la cantidad de nuevos infectados.
+    A continuacion pregunta si desea iterar, y en caso de q la respuesta sea "si", 
+    el programa realiza movimientos al azar donde la variacion oscile entre -0.5 y 0.5 
+
+    <sin validar> que las nuevas posiciones pertenezcan a los limInf y limSup
+
+    A partir de las nuevas posiciones calcula la cantidad de nuevos infectados.
+    En cada paso de tiempo muestra en pantalla la matriz de posiciones, numero
+    de infectados, numero de susceptibles, tiempo y nuevos infectados.
+    El calculo se efectua mientras que la respuesta sea "si" y mientras que 
+    el tiempo sea menor a la duracion del periodo de contagio ingresado (tFinal).
+
+
+NEXT
+>>>>>>>>>>>>>>     _validar que las posiciones en x e y 
+                    pertenezcan al cuadrado
+                    [limInf,limSup]x[limInf,limSup] y en caso 
+                    de que no, generar condicion de periodicidad <<<<<<<<< - -  DONE - -
+
+                   _escribir los resultados en archivos, con formato
+>>>>>>>>>>>>>>      conveniente para graficar con xmgrace
+
+--------------------------------------------------------------------------
+
+VER
+>>>>>>>>>>>>>>      ¿recuperados? <<<<<<<<<<< - -  DONE - -
