@@ -36,7 +36,8 @@ int nRec, newRec, nSus, nInf, newInf, time=0, tRec;
 ofstream result("RESULT.out");
 
 int main() {
-    ingresoDeDatos(); //nHab,dContag,linf,lsup,semilla,tFinal,tRec
+        /*------------------Ingreso de datos e inicializacion de fichero*/
+        ingresoDeDatos(); //nHab,dContag,linf,lsup,semilla,tFinal,tRec
         ficheroEncabezado();
         srand(semilla);
         /*------------------Generacion de arreglos*/
@@ -44,24 +45,24 @@ int main() {
         for (int i=0; i<nHab; i++) {
             puntero_positions[i] = new float [nCol];
         }
-        /*----------------------------------------*/
-    asignRandomXY(puntero_positions,nHab); //asignacion de posiciones aleatorias
-    iniciaInfectadoRecupTime(puntero_positions,nHab); //estado de infectados, susceptibles e inicializacion de tiempo de recuperacion
+        /*---------------------------Inicialización*/
+        asignRandomXY(puntero_positions,nHab); //asignacion de posiciones aleatorias
+        iniciaInfectadoRecupTime(puntero_positions,nHab); //estado de infectados, susceptibles e inicializacion de tiempo de recuperacion
             nRec=0;
             nInf=1;
             nSus=nHab-nInf; 
         /*----------------------------------------*/
-        ficheroWrite(time, nSus, nInf, nRec);
-
         /*--------Comienzo de la iteración---------*/
+        ficheroWrite(time, nSus, nInf, nRec);
         aumentoTiempoRecuperados(puntero_positions,nHab,tRec);
+
             newRec=countRec(puntero_positions,nHab);
             newInf=newInfected(puntero_positions, nHab, dContag);
             nRec=nRec+newRec;        
             nInf= nInf+newInf-newRec;
             nSus= nSus-newInf;
-        cout << "\n\nDesea iterar? ";
-        cin >> resp;
+        //cout << "\n\nDesea iterar? ";
+        //cin >> resp;
 
     while(time<tFinal && resp=="si") {
         movePos(puntero_positions, nHab, nCol);
@@ -74,8 +75,8 @@ int main() {
             nSus= nSus-newInf;
             nInf= nInf+newInf-newRec;
 
-        cout << "\n\nDesea iterar? ";
-        cin >> resp;    
+        //cout << "\n\nDesea iterar? ";
+        //cin >> resp;    
     } 
         /*----------------------------------------*/
 
@@ -84,7 +85,7 @@ int main() {
 
 // //////////////////////////////Contador de Recuperados
 int countRec(float** array,int nFilas) {
-  cout<<"\nContador de recuperados";
+  //cout<<"\nContador de recuperados";
   int count=0;
   for (int i=0; i<nFilas; i++) {
         if( *(*(array+i)+2) == -1 ) {
@@ -96,7 +97,7 @@ int countRec(float** array,int nFilas) {
 
 // //////////////////////////////Tiempo Recuperados
 void aumentoTiempoRecuperados(float **array, int nFilas, int time) {
-  cout<<"\nAumento de tiempo en los estados recuperados";
+  //cout<<"\nAumento de tiempo en los estados recuperados";
   for (int i=0; i<nFilas; i++) {
         if( *(*(array+i)+2) != 0 ) {
             *(*(array+i)+3)=*(*(array+i)+3) + 1;
@@ -128,7 +129,7 @@ float validacionMovePos(float pos) {
 
 // //////////////////////////////Mover posiciones
 void movePos(float **array, int filas, int col) {
-    cout << "Moviendo posiciones entre el cuadrado: "<<linf<<" , "<<lsup<<endl;
+    //cout << "Moviendo posiciones entre el cuadrado: "<<linf<<" , "<<lsup<<endl;
     float min=-0.5, max=0.5;
     for (int i=0; i<filas; i++) {
         for (int j=0; j<2; j++) {
@@ -152,7 +153,7 @@ string validacionVecNeue(int i, vector<int> arr) {
 }
 // //////////////////////////////Calculo de nuevos infectados
 int newInfected(float **puntero_positions, int nFilas, float contagio) {
-cout<<"\nCalculo de nuevos infectados"<<endl;
+//cout<<"\nCalculo de nuevos infectados"<<endl;
 float dist, dx, dy;
 vector<int> vecNeue;
 int neue=0;
@@ -168,9 +169,9 @@ for (int i=0; i<nFilas; i++) {
                     float bx=*(*(puntero_positions+j)+0);
                     float by=*(*(puntero_positions+j)+1);
                     dist=calculaDistancia(ax,ay,bx,by);
-                    cout<<"\nLa distancia de ["<< i << "] a [" << j << "] es: " << dist;
+                    //cout<<"\nLa distancia de ["<< i << "] a [" << j << "] es: " << dist;
                     if (dist < contagio) {
-                            cout << "\nOh no! Se contagio [" << j << "]";
+                            //cout << "\nOh no! Se contagio [" << j << "]";
                             vecNeue.push_back(j);
                             neue++;
                         }
@@ -240,7 +241,7 @@ void ficheroEncabezado() {
         result<<"#                 SIR simulation 2020               "<<endl;
         result<<"#                         by mirinnes               "<<endl;
         result<<"#----------------------------------------------------"<<endl;
-        result<<"#                                                     "<<endl;
+        result<<"#                                                    "<<endl;
         result<<"#CANT HAB: "<<nHab<<endl;
         result<<"#REGION: ["<<linf<<","<<lsup<<"]x["<<linf<<","<<lsup<<"]"<<endl;
         result<<"#PERIOD DUR: "<<tFinal<<endl;
