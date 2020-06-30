@@ -33,7 +33,7 @@ int nHab, nCol=4, tFinal, semilla;
 int nRec, newRec, nSus, nInf, newInf, time=0, tRec;
 
 //Archivos 
-ofstream result("RESULT.out");
+ofstream result("RESULT.dat");
 
 int main() {
         /*------------------Ingreso de datos e inicializacion de fichero*/
